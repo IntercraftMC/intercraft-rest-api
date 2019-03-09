@@ -19,7 +19,10 @@ Route::prefix("auth")->group(function () {
     Route::post("password_reset",  "AuthController@resetPassword");
 });
 
-Route::middleware("auth:api")->get("/test", function () {
-    return response()->json([], 200);
+Route::middleware("auth:api")->group(function () {
+    Route::prefix("filesystem")->group(function () {
+        Route::post("/register",   "FilesystemController@register");
+        Route::post("/unregister", "FilesystemController@unregister");
+    });
 });
 

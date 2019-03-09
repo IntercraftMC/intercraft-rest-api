@@ -4,7 +4,7 @@
  * Generate a random string of charaters
  *
  * @param [boolean] $len
- * @param string
+ * @return string
  */
 function random_str($len)
 {
@@ -14,4 +14,15 @@ function random_str($len)
         $result .= $chars[mt_rand(0, 63)];
     }
     return $result;
+}
+
+/**
+ * Join paths together into a string
+ *
+ * @param [array<string>] $args
+ * @return string
+ */
+function path_join(...$paths)
+{
+    return preg_replace("#/+#", '/', join('/', $paths));
 }

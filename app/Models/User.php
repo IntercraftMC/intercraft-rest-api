@@ -40,6 +40,14 @@ class User extends Authenticatable implements JWTSubject
     // ];
 
     /**
+     * Fetch all of the user's filesystems
+     */
+    public function filesystems()
+    {
+        return $this->hasMany("App\Models\Filesystem");
+    }
+
+    /**
      * Select a user by their email or password
      */
     public static function scopeEmailOrUsername($query, $email, $username)
